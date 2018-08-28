@@ -19,7 +19,7 @@ class Board
 
     @grid[end_row][end_col] = pieces
 
-    @grid[start_row][start_col] = NullPiece.new
+    @grid[start_row][start_col] = NullPiece.instance
     p @grid
 
     # raise errors if...
@@ -30,17 +30,26 @@ class Board
   end
 
   def display
-    @board.each do |row|
-      p row
-    end
+    # @board.each do |row|
+Display.render(@grid)
+    #   p row
+    # end
   end
 
 
   def populate
     (0..7).each do |row|
-      if row == 0 || row == 1 || row == 6 || row == 7
+      # if in row 0 and 1,
+      if row == 0 || row == 1
         (0..7).each do |col|
-          @grid[row][col] = Piece.new
+          piece = Piece.new
+          @grid[row][col] = piece.to_s
+        end
+
+      elsif row == 6 || row == 7
+        (0..7).each do |col|
+          piece = Piece.new
+          @grid[row][col] = piece.to_s
         end
       else
         (0..7).each do |col|
@@ -48,7 +57,8 @@ class Board
         end
       end
     end
-    p @grid
+    @grid
   end
+
 
 end
