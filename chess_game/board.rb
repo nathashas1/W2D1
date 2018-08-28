@@ -19,7 +19,7 @@ class Board
 
     @grid[end_row][end_col] = pieces
 
-    @grid[start_row][start_col] = nil
+    @grid[start_row][start_col] = NullPiece.new
     p @grid
 
     # raise errors if...
@@ -40,7 +40,11 @@ class Board
     (0..7).each do |row|
       if row == 0 || row == 1 || row == 6 || row == 7
         (0..7).each do |col|
-          @grid[row][col]=Piece.new
+          @grid[row][col] = Piece.new
+        end
+      else
+        (0..7).each do |col|
+          @grid[row][col] = NullPiece.instance
         end
       end
     end
