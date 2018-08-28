@@ -92,8 +92,9 @@ class Cursor
   end
 
   def update_pos(diff)
-    p @cursor_pos = [@cursor_pos[0] + diff[0], @cursor_pos[1] + diff[1]]
-
-    
+    p possible_pos = [@cursor_pos[0] + diff[0], @cursor_pos[1] + diff[1]]
+    @cursor_pos = possible_pos if board.valid_pos?(possible_pos)
   end
+
+
 end

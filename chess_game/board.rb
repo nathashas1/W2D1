@@ -60,5 +60,8 @@ Display.render(@grid)
     @grid
   end
 
+  def valid_pos?(pos)
+    pos.all? { |n| (0..7).include?(n) }
+  end
 
 end
