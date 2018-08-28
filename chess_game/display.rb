@@ -1,15 +1,16 @@
 require 'colorize'
 require_relative 'board'
 require_relative 'piece'
-
+require_relative 'cursor'
 
 class Display
-  attr_reader
+  attr_reader :board, :cursor
 
 
-  # def initialize(board)
-  #   @board = board
-  # end
+  def initialize(cursor = Cursor.new([0,0]), board)
+    @board = board
+    @cursor = cursor
+  end
 
   def self.render(grid)
     (0..7).map do |row|
@@ -24,8 +25,7 @@ class Display
     end
   end
 
-
-
+  # @cursor.get_input
 
 end
 
@@ -34,5 +34,7 @@ if __FILE__ == $PROGRAM_NAME
 
   b= Board.new
   b.populate
-  b.display
+  cursor = Cursor.new([0,0], b)
+  d = Display.new(cursor, b)
+  cursor.get_input
 end
