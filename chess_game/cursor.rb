@@ -76,9 +76,7 @@ class Cursor
   end
 
   def handle_key(key)
-    p @cursor_pos # >> [0,0]
-    p key
-    # p KEYMAP[key]
+    # p @cursor_pos # >> [0,0]
     case key
     when :left
       update_pos(MOVES[:left])
@@ -92,8 +90,10 @@ class Cursor
   end
 
   def update_pos(diff)
-    p possible_pos = [@cursor_pos[0] + diff[0], @cursor_pos[1] + diff[1]]
+    possible_pos = [@cursor_pos[0] + diff[0], @cursor_pos[1] + diff[1]]
     @cursor_pos = possible_pos if board.valid_pos?(possible_pos)
+
+    p "#{@cursor_pos} is the new cursor pos"
   end
 
 
