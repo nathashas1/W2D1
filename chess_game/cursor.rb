@@ -1,4 +1,5 @@
 require "io/console"
+require_relative "display"
 
 KEYMAP = {
   " " => :space,
@@ -35,8 +36,10 @@ class Cursor
   attr_reader :cursor_pos, :board
 
   def initialize(cursor_pos, board)
+    # p board
     @cursor_pos = cursor_pos
     @board = board
+    # p @board
   end
 
   def get_input
@@ -94,7 +97,7 @@ class Cursor
     @cursor_pos = possible_pos if board.valid_pos?(possible_pos)
 
     p "#{@cursor_pos} is the new cursor pos"
+    Display.update_cursor(@cursor_pos)
   end
-
 
 end

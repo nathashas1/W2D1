@@ -30,10 +30,7 @@ class Board
   end
 
   def display
-    # @board.each do |row|
-Display.render(@grid)
-    #   p row
-    # end
+    Display.render(@grid)
   end
 
 
@@ -53,7 +50,7 @@ Display.render(@grid)
         end
       else
         (0..7).each do |col|
-          @grid[row][col] = NullPiece.instance
+          @grid[row][col] = NullPiece.instance.to_s
         end
       end
     end
